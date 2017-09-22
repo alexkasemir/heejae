@@ -6,15 +6,10 @@ import {
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
-import makePantheonCore from 'pantheon-client/lib/models/core';
-
 
 export const history = createHistory();
 
 const rootReducer = combineReducers({
-  _pantheon: makePantheonCore({
-    apiUrl: `http://localhost:8000`,
-  }),
 });
 
 const middlewares = [thunk];
