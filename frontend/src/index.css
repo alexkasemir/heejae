@@ -1,0 +1,9 @@
+/* index.css
+ * Written by: Alex Kasemir
+ */
+
+html,
+body,
+#main {
+  height: 100%;
+}

@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "transform-flow-strip-types",
+    "transform-class-properties"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "> 1%",
+          "last 2 versions"
+        ]
+      },
+      "modules": false
+    }],
+    "stage-2",
+    "react"
+  ]
+}
