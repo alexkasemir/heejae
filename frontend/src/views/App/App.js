@@ -98,7 +98,11 @@ export class App extends PureComponent {
                         ? PrivateRoute
                         : Route;
 
-                      return <RendRoute key={ r.path } { ...r } />;
+                      return (<RendRoute
+                        key={ r.path }
+                        isAuthenticated={ isAuthenticated }
+                        { ...r }
+                      />);
                     })
                   }
                 </Switch>
@@ -118,7 +122,7 @@ if (process.env.NODE_ENV !== `production`) {
     jwt: PropTypes.string.isRequired,
     loadSession: PropTypes.func.isRequired,
     loadToken: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object,
   };
 }
 

@@ -13,10 +13,9 @@ export const getUserStart = () => ({
   type: GET_USER_START,
 });
 
-export const getUserSuccess = (user, id) => ({
+export const getUserSuccess = (user) => ({
   type: GET_USER_SUCCESS,
   user,
-  id,
 });
 
 export const getUserFailure = (id, error) => ({
@@ -38,10 +37,7 @@ export const getUser = () => {
         method: `GET`,
       }))
         .then((response) => {
-          dispatch(getUserSuccess(
-            response.data.id,
-            response.data,
-          ));
+          dispatch(getUserSuccess(response.data));
           resolve();
         })
         .catch((error) => {

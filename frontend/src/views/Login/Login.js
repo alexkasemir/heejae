@@ -33,9 +33,12 @@ export class Login extends Component {
   }
 
   loginSubmit = (e) => {
-    const { login } = this.props;
+    const { login, history } = this.props;
     e.preventDefault();
-    login(this.state);
+    login(this.state)
+      .then(() => {
+        history.push(`/`);
+      });
   }
 
   render() {
@@ -70,6 +73,7 @@ export class Login extends Component {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default connect((state) => {

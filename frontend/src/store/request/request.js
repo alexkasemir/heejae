@@ -8,8 +8,7 @@ import { API_URL } from 'utils';
 
 const request = (config) => {
   return (dispatch, getState) => {
-    const { auth } = getState();
-    const token = auth ? auth.token : null;
+    const { token } = getState().user.auth;
     const baseConfig = {
       headers: {
         'Content-Type': `application/json`,

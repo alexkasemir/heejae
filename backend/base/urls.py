@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('custom_auth.urls')),
     url(r'^', include('posts.urls')),
+    url(r'^', include('users.urls')),
+    url(r'^', include('workouts.urls')),
 ] + staticfiles_urlpatterns()

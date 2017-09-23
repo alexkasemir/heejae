@@ -15,4 +15,12 @@
 
 .Header__content {
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header__welcome {
+  color: var(--color_white);
+  font-size: 2rem;
+  font-weight: 600;
 }

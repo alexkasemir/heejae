@@ -12,9 +12,10 @@ export const loginStart = () => ({
   type: LOGIN_START,
 });
 
-export const loginSuccess = (token) => ({
+export const loginSuccess = (token, user) => ({
   type: LOGIN_SUCCESS,
   token,
+  user,
 });
 
 export const loginFailure = (error) => ({
@@ -36,9 +37,9 @@ export const login = (loginData) => {
         data: loginData,
       }))
         .then((response) => {
-          const { token } = response.data;
+          const { token, user } = response.data;
           window.localStorage.setItem(`jwtToken`, token);
-          dispatch(loginSuccess(token));
+          dispatch(loginSuccess(token, user));
           resolve();
         }).catch((error) => {
           dispatch(loginFailure(error));

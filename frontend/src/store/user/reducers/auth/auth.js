@@ -15,9 +15,15 @@ const initialState = {
 const auth = (state = initialState, action) => {
   switch (action.type) {
     case userActions.LOGIN_SUCCESS:
+    case userActions.REFRESH_TOKEN_SUCCESS:
       return {
         ...state,
         token: action.token,
+      };
+    case userActions.REMOVE_TOKEN_SUCCESS:
+      return {
+        ...state,
+        token: ``,
       };
     default:
       return state;

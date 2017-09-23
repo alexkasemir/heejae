@@ -18,17 +18,17 @@ export default [
   {
     path: `/`,
     exact: true,
-    private: false,
+    private: true,
     component: Home,
   },
   {
     path: `/createPost`,
-    private: false,
+    private: true,
     component: CreatePost,
   },
   {
     path: `/createWorkout`,
-    private: false,
+    private: true,
     component: CreateWorkout,
   },
 ];

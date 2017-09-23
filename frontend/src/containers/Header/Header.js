@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
@@ -20,25 +20,47 @@ export class Header extends Component {
   }
 
   render() {
+    const { isAuthenticated, user } = this.props;
     return (
       <div className="Header">
         <div className="Header__content">
-          <div className="float-left Header__logo">
+          <div className="Header__logo">
             <Link to="/">
               <Logo />
             </Link>
           </div>
+          <div className="Header__welcome">
+            {
+              user
+                ? `Welcome: ${user.username}`
+                : ``
+            }
+          </div>
+          { isAuthenticated
+            ? <div className="Header__buttons">
+              <Link to="/createPost">
+                Post
+              </Link>
+              <Link to="/createWorkout">
+                Post Workout
+              </Link>
+            </div>
+            : null
+          }
         </div>
       </div>
     );
   }
 }
 
-Header.propTypes = {};
+Header.propTypes = {
+  user: PropTypes.object,
+  isAuthenticated: PropTypes.bool.isRequired,
+};
 
 export default connect((state) => {
   return {
-    ...state,
+    user: state.user.meta.user,
   };
 }, {
 
