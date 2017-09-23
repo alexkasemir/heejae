@@ -15,4 +15,4 @@ app.get(/\/(.*)/, function(req, res) {
 
 app.listen(process.env.PORT || 80, function () {
   console.log('UI server started!');
-})
+});

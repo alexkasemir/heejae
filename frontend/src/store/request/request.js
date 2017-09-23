@@ -4,6 +4,7 @@
  */
 
 import axiosRequest from 'axios';
+import { API_URL } from 'utils';
 
 const request = (config) => {
   return (dispatch, getState) => {
@@ -19,6 +20,7 @@ const request = (config) => {
     return axiosRequest({
       ...baseConfig,
       ...config,
+      url: `${API_URL}${config.url}`,
       headers: {
         ...baseConfig.headers,
         ...config.headers,

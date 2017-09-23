@@ -1,0 +1,4 @@
+{
+  "name": "checkExpiredToken",
+  "main": "checkExpiredToken.js"
+}

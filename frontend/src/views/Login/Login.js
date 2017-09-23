@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import FormField from 'elemental/lib/components/FormField';
@@ -32,6 +32,12 @@ export class Login extends Component {
     };
   }
 
+  loginSubmit = (e) => {
+    const { login } = this.props;
+    e.preventDefault();
+    login(this.state);
+  }
+
   render() {
     return (
       <div className="Login">
@@ -47,9 +53,14 @@ export class Login extends Component {
               <FormInput onChange={ this.onChange(`username`) } autoFocus placeholder="Enter Participant ID" />
             </FormField>
             <FormField label="Password" htmlFor="basic-form-input-password">
-              <FormInput type="password" placeholder="Password" name="basic-form-input-password" />
+              <FormInput
+                onChange={ this.onChange(`password`) }
+                type="password"
+                placeholder="Password"
+                name="basic-form-input-password"
+              />
             </FormField>
-            <Button submit>Submit to jerk heejae off</Button>
+            <Button onClick={ this.loginSubmit } submit>Submit to jerk heejae off</Button>
           </div>
         </div>
       </div>
@@ -57,7 +68,9 @@ export class Login extends Component {
   }
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default connect((state) => {
   return {
