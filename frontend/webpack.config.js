@@ -26,7 +26,7 @@ const plugins = [
     files: '**/*.css'
   }),
   new HtmlWebpackPlugin({
-    title: 'A Website Title',
+    title: 'Heejae Sucks',
     template: path.resolve(__dirname, './src/index.ejs'),
     filename: isProd ? '../index.html' : 'index.html',
     hash: isProd,
@@ -51,18 +51,18 @@ module.exports = {
       'redux',
       'react-redux',
       'react-router-dom',
-      'reselect'
-    ]
+      'reselect',
+    ],
   },
   output: {
     path: path.join(__dirname, './build'),
     filename: isProd ? '[name][chunkhash].js' : '[name].js',
-    publicPath: '/build/'
+    publicPath: '/build/',
   },
   devServer: {
     publicPath: 'http://localhost:3000/build/',
     port: 3000,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -70,7 +70,7 @@ module.exports = {
         test: /\.js$/,
         exclude: [/node_modules/],
         enforce: 'pre',
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
       },
       {
         test: /\.js$/,
@@ -82,13 +82,13 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           loader: [
             'css-loader',
-            'postcss-loader'
-          ]
-        })
+            'postcss-loader',
+          ],
+        }),
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.(eot|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
@@ -101,11 +101,11 @@ module.exports = {
             loader: 'image-webpack-loader?bypassOnDebug',
           },
           {
-            loader: 'file-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.css', '.svg', '.png'],
@@ -117,7 +117,7 @@ module.exports = {
       root: path.resolve(__dirname, 'src/'),
       store: path.resolve(__dirname, 'src/store/'),
       views: path.resolve(__dirname, 'src/views/'),
-    }
+    },
   },
   plugins: plugins,
 };

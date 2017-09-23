@@ -3,6 +3,8 @@
  * Written by: Alex Kasemir
  * This file is meant to include base styles for the entire app
  */
+
+@import 'variables.css';
 @import 'base.css';
 @import 'components';
 @import 'containers';

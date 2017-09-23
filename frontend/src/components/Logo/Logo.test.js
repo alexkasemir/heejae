@@ -1,0 +1,6 @@
+describe('Logo', () => {
+  it('renders', () => {
+
+  });
+
+});

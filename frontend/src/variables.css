@@ -1,0 +1,9 @@
+:root {
+  --font-primary: 'Open Sans', helvetica, arial, sans-serif;
+  --font-secondary: 'Open Sans', helvetica, arial, sans-serif;
+  --color_tufts_blue: #3e8ede;
+  --color_tufts_brown: #512c1d;
+  --color_white: #fff;
+  --color_gray: #646469;
+  --header_height: 5.5rem;
+}

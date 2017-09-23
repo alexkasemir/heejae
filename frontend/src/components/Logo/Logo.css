@@ -1,0 +1,14 @@
+/**
+ * Logo.css
+ * Written by: Alex Kasemir
+ */
+
+.Logo {
+  color: var(--color_tufts_blue);
+  width: 100%;
+}
+
+.Logo__image {
+  width: 100%;
+  height: auto;
+}

@@ -4,5 +4,15 @@
  */
 
 .Header {
+  width: 100%;
+  height: var(--header_height);
+  background: var(--color_gray);
+}
 
+.Header__logo {
+  width: 150px;
+}
+
+.Header__content {
+  padding: 1rem 2rem;
 }
