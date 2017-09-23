@@ -4,10 +4,9 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import './CreatePost.css';
 
 export class CreatePost extends Component {
   constructor(props) {

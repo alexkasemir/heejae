@@ -43,19 +43,19 @@ export class App extends PureComponent {
       <Router>
         <div className="App">
           <Header />
-            <div className="page-wrap">
-              <Switch>
-                {
-                  routes.map((r) => {
-                    const Route = r.private
-                      ? PrivateRoute
-                      : Route;
+          <div className="page-wrap">
+            <Switch>
+              {
+                routes.map((r) => {
+                  const RendRoute = r.private
+                    ? PrivateRoute
+                    : Route;
 
-                    return <Route key={ r.path } { ...r } />;
-                  })
-                }
-              </Switch>
-            </div>
+                  return <RendRoute key={ r.path } { ...r } />;
+                })
+              }
+            </Switch>
+          </div>
           <Footer />
         </div>
       </Router>
@@ -66,10 +66,12 @@ export class App extends PureComponent {
 if (process.env.NODE_ENV !== `production`) {
   const PropTypes = require(`prop-types`); // eslint-disable-line
   App.propTypes = {
-
+    jwt: PropTypes.string.isRequired,
   };
 }
 
-export default connect(() => ({}), {
+export default connect((state) => ({
+  jwt: state.user.auth.token,
+}), {
 
 })(App);

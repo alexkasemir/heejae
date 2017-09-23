@@ -4,9 +4,8 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import './Footer.css';
 
 export default class Footer extends Component {
   constructor(props) {

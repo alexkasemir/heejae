@@ -5,11 +5,16 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-
+import user from 'store/user/reducers';
+import post from 'store/post/reducers';
+import workout from 'store/workout/reducers';
 
 export const history = createHistory();
 
 const rootReducer = combineReducers({
+  user,
+  post,
+  workout,
 });
 
 const middlewares = [thunk];
