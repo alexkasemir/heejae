@@ -20,6 +20,7 @@ const auth = (state = initialState, action) => {
         ...state,
         token: action.token,
       };
+    case userActions.LOGOUT_SUCCESS:
     case userActions.REMOVE_TOKEN_SUCCESS:
       return {
         ...state,

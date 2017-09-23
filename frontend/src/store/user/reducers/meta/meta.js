@@ -14,6 +14,7 @@ const meta = (state = {}, action) => {
         ...state,
         user: action.user,
       };
+    case userActions.LOGOUT_SUCCESS:
     case userActions.REMOVE_TOKEN_SUCCESS:
       return {};
     default:

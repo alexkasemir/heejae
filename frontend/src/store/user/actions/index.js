@@ -9,6 +9,7 @@ import * as loadSession from './loadSession';
 import * as checkExpiredToken from './checkExpiredToken';
 import * as removeToken from './removeToken';
 import * as refreshToken from './refreshToken';
+import * as logout from './logout';
 
 export default {
   ...get,
@@ -18,4 +19,5 @@ export default {
   ...checkExpiredToken,
   ...removeToken,
   ...refreshToken,
+  ...logout,
 };
