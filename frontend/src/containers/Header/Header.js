@@ -4,9 +4,12 @@
  */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+
+import Logo from 'components/Logo';
 
 export class Header extends Component {
   constructor(props) {
@@ -19,7 +22,13 @@ export class Header extends Component {
   render() {
     return (
       <div className="Header">
-        Header
+        <div className="Header__content">
+          <div className="float-left Header__logo">
+            <Link to="/">
+              <Logo />
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
