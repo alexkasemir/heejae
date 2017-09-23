@@ -1,6 +1,6 @@
 /**
  * App.js
- * Written by: Connor Taylor
+ * Written by: Alex Kasemir
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
@@ -8,29 +8,30 @@ import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
+  Redirect,
+  Route,
 } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-
-import AppWrap from 'pantheon-client/lib/components/AppWrap';
-import PageWrap from 'pantheon-client/lib/components/PageWrap';
-import EventRoute from 'pantheon-client/lib/components/EventRoute';
-
-import requiresAuth from 'pantheon-client/lib/hocs/requiresAuth';
-
 import routes from 'root/routes';
+import Header from 'containers/Header';
+import Footer from 'components/Footer';
 
-// Uncomment the section below for performance testing
-// import Perf from 'react-addons-perf';
 
-// Perf.start();
+const PrivateRoute = ({ isAuthenticated, ...rest }) => ( // eslint-disable-line
+  isAuthenticated
+    ? <Route { ...rest } />
+    : (
+      <Redirect
+        push
+        to={ {
+          pathname: `/login`,
+          search: `${rest.location.search}`,
+          state: { redirect: rest.computedMatch.url },
+        } }
+      />
+    )
+);
 
-// setTimeout(() => {
-//   Perf.stop();
-//   Perf.printWasted();
-// }, 5000);
-
-const PrivateRoute = requiresAuth(EventRoute);
 
 /**
  * The App view wraps all other views in the React application, providing a
@@ -40,26 +41,23 @@ export class App extends PureComponent {
   render() {
     return (
       <Router>
-        <AppWrap>
-          <Helmet>
-            <title>
-              Your App
-            </title>
-          </Helmet>
-          <PageWrap>
-            <Switch>
-              {
-                routes.map((r) => {
-                  const Route = r.private
-                    ? PrivateRoute
-                    : EventRoute;
+        <div className="App">
+          <Header />
+            <div className="page-wrap">
+              <Switch>
+                {
+                  routes.map((r) => {
+                    const Route = r.private
+                      ? PrivateRoute
+                      : Route;
 
-                  return <Route key={ r.path } { ...r } />;
-                })
-              }
-            </Switch>
-          </PageWrap>
-        </AppWrap>
+                    return <Route key={ r.path } { ...r } />;
+                  })
+                }
+              </Switch>
+            </div>
+          <Footer />
+        </div>
       </Router>
     );
   }

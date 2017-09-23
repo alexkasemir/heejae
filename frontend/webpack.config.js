@@ -38,18 +38,6 @@ const plugins = [
   }),
 ];
 
-if (process.env.ANALYZE_BUNDLE) {
-  plugins.push(new BundleAnalyzerPlugin({
-    generateStatsFile: true,
-    openAnalyzer: false,
-  }));
-}
-
-// We only want to do this for production since it will mess with the module
-// names in the bundle analysis
-if (process.env.NODE_ENV === 'production' && !process.env.ANALYZE_BUNDLE) {
-  plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
-}
 
 module.exports = {
   devtool: isProd ? 'cheap-module-source-map' : 'cheap-module-eval-source-map',
@@ -58,18 +46,12 @@ module.exports = {
     app: './index',
     vendor: [
       'axios',
-      'lodash.omit',
-      'lodash.uniq',
-      'lodash.without',
       'react',
       'react-dom',
-      'react-helmet',
       'redux',
       'react-redux',
       'react-router-dom',
-      'reselect',
-      'styled-components',
-      'uuid'
+      'reselect'
     ]
   },
   output: {
@@ -92,7 +74,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!(pantheon-client|react-icons)\/).*/,
+        exclude: /node_modules\/(?!(react-icons)\/).*/,
         loader: 'babel-loader',
       },
       {

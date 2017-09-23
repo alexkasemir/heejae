@@ -1,0 +1,6 @@
+describe('CreatePost', () => {
+  it('renders', () => {
+
+  });
+
+});

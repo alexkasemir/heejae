@@ -1,9 +1,9 @@
-/* index.css
+/**
+ * index.css
  * Written by: Alex Kasemir
+ * This file is meant to include base styles for the entire app
  */
-
-html,
-body,
-#main {
-  height: 100%;
-}
+@import 'base.css';
+@import 'components';
+@import 'containers';
+@import 'views';

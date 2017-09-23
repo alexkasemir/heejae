@@ -1,0 +1,16 @@
+/* base.css
+ * Written by: Alex Kasemir
+ */
+
+html,
+body,
+#main {
+  height: 100%;
+}
+
+.page-wrap {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
