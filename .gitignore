@@ -2,6 +2,7 @@ secrets.py
 db.sqlite3
 node_modules
 *.pyc
+.DS_Store
 
 # Logs
 logs

@@ -7,19 +7,51 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import FormField from 'elemental/lib/components/FormField';
+import FormInput from 'elemental/lib/components/FormInput';
+import Button from 'elemental/lib/components/Button';
+
+import userActions from 'store/user/actions';
 
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: ``,
+      password: ``,
+    };
+  }
 
+  onChange = (key) => {
+    return (e) => {
+      const { value } = e.target;
+
+      this.setState({
+        [key]: value,
+      });
     };
   }
 
   render() {
     return (
       <div className="Login">
-        Login
+        <div className="Card">
+          <div className="Card__header">
+            Login
+          </div>
+          <div className="Card__body">
+            <h2 className="Login__headline">
+              Login to see Heejae penises
+            </h2>
+            <FormField label="Participant ID">
+              <FormInput onChange={ this.onChange(`username`) } autoFocus placeholder="Enter Participant ID" />
+            </FormField>
+            <FormField label="Password" htmlFor="basic-form-input-password">
+              <FormInput type="password" placeholder="Password" name="basic-form-input-password" />
+            </FormField>
+            <Button submit>Submit to jerk heejae off</Button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -29,8 +61,8 @@ Login.propTypes = {};
 
 export default connect((state) => {
   return {
-    ...state,
+    jwt: state.user.auth.token,
   };
 }, {
-
+  login: userActions.login,
 })(Login);

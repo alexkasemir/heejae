@@ -2,12 +2,8 @@
  * actions.js
  * Written by: Alex Kasemir
  */
-import * as byId from './byId';
-import * as meta from './meta';
-import * as session from './session';
+import * as login from './login';
 
 export default {
-  ...byId,
-  ...meta,
-  ...session,
+  ...login,
 };

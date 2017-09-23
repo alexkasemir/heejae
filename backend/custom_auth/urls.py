@@ -7,6 +7,7 @@ from rest_framework_jwt.views import (
 )
 
 urlpatterns = [
+    url(r'^auth/rest/', include('rest_auth.urls')),
     url(r'^auth/token-auth/', obtain_jwt_token),
     url(r'^auth/token-refresh/', refresh_jwt_token),
     url(r'^auth/token-verify/', verify_jwt_token),

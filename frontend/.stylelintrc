@@ -1,3 +1,6 @@
 {
-  "extends": "stylelint-config-minerva"
+  "extends": "stylelint-config-minerva",
+  "ignoreFiles": [
+    "src/elemental.css"
+  ]
 }

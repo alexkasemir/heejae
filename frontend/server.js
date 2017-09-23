@@ -7,10 +7,6 @@ app.use('/build', express.static('build', {
   maxAge: 31536000000, // in ms format, cache for 1 year
 }));
 
-app.use('/ping/', (req, res) => {
-  res.end('OK');
-});
-
 // Any route not matching requesting a static file should send the index.html
 // file
 app.get(/\/(.*)/, function(req, res) {
