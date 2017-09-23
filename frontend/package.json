@@ -6,8 +6,8 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "lint-fix": "eslint --fix",
     "test": "jest",
-    "prod": "node server.js",
-    "build": "API_ENV=production NODE_ENV=production webpack -p"
+    "build": "API_ENV=production NODE_ENV=production webpack -p",
+    "prod": "node server.js"
   },
   "keywords": [],
   "author": "Alex Kasemir",
@@ -17,6 +17,7 @@
     "elemental": "^0.6.1",
     "express": "^4.15.4",
     "history": "^4.6.3",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",

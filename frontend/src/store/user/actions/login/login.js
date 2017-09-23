@@ -30,7 +30,11 @@ export const login = (loginData) => {
     dispatch(loginStart());
 
     return new Promise((resolve, reject) => {
-      return dispatch(request(`post`, `/auth/rest/login/`, loginData))
+      return dispatch(request({
+        method: `post`,
+        url: `/auth/rest/login/`,
+        data: loginData,
+      }))
         .then((response) => {
           const { token } = response.data;
           window.localStorage.setItem(`jwtToken`, token);

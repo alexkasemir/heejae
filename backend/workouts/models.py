@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from users.models import User
 
-# Create your models here.
-class workout(models.Model):
-	user = models.ForeignKey(User, related_name='workouts')
-	start_ts = models.DateTimeField(auto_now_add=True)
-	end_ts = models.DateTimeField(auto_now_add=True)
-	
+
+class Workout(models.Model):
+    user = models.ForeignKey(User, related_name='workouts')
+    start_ts = models.DateTimeField()
+    end_ts = models.DateTimeField()
+    created_ts = models.DateTimeField(auto_now_add=True)

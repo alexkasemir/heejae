@@ -23,9 +23,13 @@ DEBUG = True
 
 SITE_ID = 1
 
-CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['localhost']
 
-ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
     # Third Party
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
     'corsheaders',
 
     # Custom
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,6 +127,9 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
 }
 
+# Using JSON Web Tokens
+REST_USE_JWT = True
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -146,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
