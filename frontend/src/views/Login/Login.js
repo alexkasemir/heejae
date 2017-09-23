@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import FormField from 'elemental/lib/components/FormField';
@@ -42,6 +43,12 @@ export class Login extends Component {
   }
 
   render() {
+    const { jwt } = this.props;
+
+    if (jwt) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="Login">
         <div className="Card">
@@ -74,6 +81,7 @@ export class Login extends Component {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  jwt: PropTypes.string,
 };
 
 export default connect((state) => {
