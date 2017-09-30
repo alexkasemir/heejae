@@ -9,6 +9,7 @@ djangorestframework==3.6.4
 djangorestframework-jwt==1.11.0
 docutils==0.14
 futures==3.1.1
+gunicorn==19.7.1
 jmespath==0.9.3
 Markdown==2.6.9
 psycopg2==2.7.3.1
