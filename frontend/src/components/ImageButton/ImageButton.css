@@ -1,0 +1,40 @@
+/**
+ * ImageButton.css
+ * Written by: Alex Kasemir
+ */
+
+.ImageButton {
+  background: var(--color_tufts_brown);
+  padding: 3rem;
+  width: calc(100% + 4rem);
+  margin: 0 -2rem 0;
+}
+
+.ImageButton__button {
+  width: 100%;
+}
+
+.ImageButton__camera {
+  margin-right: 1.25rem;
+  font-size: 2.5rem;
+}
+
+.ImageButton__label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.image_upload {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .ImageButton {
+    width: calc(100% + 2rem);
+    margin: 0 -1rem 0;
+  }
+
+  .ImageButton {
+    padding: 0;
+  }
+}
