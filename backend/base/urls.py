@@ -19,8 +19,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('custom_auth.urls')),
-    url(r'^', include('posts.urls')),
-    url(r'^', include('users.urls')),
-    url(r'^', include('workouts.urls')),
+    url(r'^api/', include('custom_auth.urls')),
+    url(r'^api/', include('posts.urls')),
+    url(r'^api/', include('users.urls')),
+    url(r'^api/', include('workouts.urls')),
 ] + staticfiles_urlpatterns()

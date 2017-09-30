@@ -1,6 +1,7 @@
 secrets.py
 db.sqlite3
 node_modules
+backend/staticfiles/
 *.pyc
 .DS_Store
 .env
