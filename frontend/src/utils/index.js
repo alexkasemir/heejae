@@ -1,6 +1,6 @@
 
 export const API_URL = process.env.NODE_ENV === `production`
-  ? `heejae.cogolo.net/api`
+  ? `https://heejae.herokuapp.com/api`
   : `http://localhost:8000`;
 
 export const getLocalStorage = (key) => {

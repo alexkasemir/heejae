@@ -25,4 +25,7 @@ urlpatterns = [
     url(r'^api/', include('users.urls')),
     url(r'^api/', include('workouts.urls')),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^login/$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^createPost/$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^createWorkout/$', TemplateView.as_view(template_name='index.html'), name='home'),
 ] + staticfiles_urlpatterns()
