@@ -7,6 +7,7 @@ const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleTracker  = require('webpack-bundle-tracker');
 
 const isProd = process.env.NODE_ENV === 'production';
 const prodAPI = process.env.API_ENV === 'production';
@@ -29,13 +30,13 @@ const plugins = [
     title: 'Heejae Sucks',
     template: path.resolve(__dirname, './src/index.ejs'),
     filename: isProd ? '../index.html' : 'index.html',
-    hash: isProd,
     alwaysWriteToDisk: true,
   }),
   // Required so we can use webpack-dev-server out of box
   new HtmlWebpackHarddiskPlugin({
     outputPath: path.resolve(__dirname, './'),
   }),
+  new BundleTracker({filename: './build/webpack-stats.json'}),
 ];
 
 

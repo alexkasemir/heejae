@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +24,5 @@ urlpatterns = [
     url(r'^api/', include('posts.urls')),
     url(r'^api/', include('users.urls')),
     url(r'^api/', include('workouts.urls')),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
 ] + staticfiles_urlpatterns()

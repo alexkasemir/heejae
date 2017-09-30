@@ -20,11 +20,12 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 SITE_ID = 1
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'corsheaders',
+    'webpack_loader',
 
     # Custom
     'custom_auth.apps.CustomAuthConfig',
@@ -80,7 +82,7 @@ ROOT_URLCONF = 'base.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'base/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -189,8 +191,17 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_URL = '/build/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), os.path.join(ROOT_DIR, "frontend/build")]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/static',
+        'STATS_FILE': os.path.join(ROOT_DIR, 'frontend/build/webpack-stats.json')
+    }
+}
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
