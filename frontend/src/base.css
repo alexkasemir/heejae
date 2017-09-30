@@ -16,12 +16,43 @@ body,
   padding: 0 2rem;
 }
 
+.inner-wrap,
+.inner-wrap-full {
+  padding: 2rem;
+}
+
+@media (max-width: 1023px) {
+  .inner-wrap-full {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-wrap {
+    padding: 0 1rem;
+  }
+
+  .inner-wrap {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .inner-wrap-full {
+    padding: 0;
+  }
+}
+
 .Card {
   border-color: var(--color_tufts_blue);
   border-radius: 0.5px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0, 0, 0, 0.1);
   border-width: 1px;
   border-style: solid;
+  width: 100%;
+  max-width: 768px;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .Card__header {
@@ -35,6 +66,32 @@ body,
 .Card__body {
   text-align: center;
   padding: 3rem 2rem;
+}
+
+@media (max-width: 767px) {
+  .Card {
+    box-shadow: 0 0 0 #000;
+    padding: 0;
+  }
+
+  .Card__body {
+    padding: 2rem 1rem;
+  }
+}
+
+.Button--white,
+.Button--white:hover,
+.Button--white:active,
+.Button--white:focus {
+  color: var(--color_white) !important;
+  border: 3px solid var(--color_white);
+  background: transparent;
+  height: auto;
+  padding: 1rem;
+  border-radius: 20px;
+  line-height: 1.5;
+  text-shadow: none;
+  font-size: 1.5rem;
 }
 
 .float-left {

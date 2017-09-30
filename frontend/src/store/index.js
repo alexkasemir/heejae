@@ -6,13 +6,17 @@ import {
 import thunk from 'redux-thunk';
 import user from 'store/user/reducers';
 import post from 'store/post/reducers';
-import workout from 'store/workout/reducers';
+// import workout from 'store/workout/reducers';
+import pending from 'store/pending/reducers';
+import alert from 'store/alert/reducers';
 
 
 const rootReducer = combineReducers({
   user,
   post,
-  workout,
+  // workout,
+  pending,
+  alert,
 });
 
 const middlewares = [thunk];

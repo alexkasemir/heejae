@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import datetime
-from secrets import SECRET_KEY
+import dj_database_url
+
+from secrets import SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -99,6 +101,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# Use local database in DEBUG mode, heroku's database in production
+DB_ENV = os.environ.get('DB_ENV', 'local' if DEBUG else 'prod')
+
+if DB_ENV == 'local':
+    DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'heejae'},
+    }
+else:
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES = {'default': db_from_env}
 
 REST_RENDERER = (
     'rest_framework.renderers.JSONRenderer',
@@ -148,6 +161,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# AWS settings
+#https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_REGION = 'us-east-1'
+S3_URL = 'https://s3.amazonaws.com/heejae-experiment/images'
 
 
 # Internationalization

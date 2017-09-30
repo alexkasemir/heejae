@@ -5,8 +5,8 @@
  */
 
 @import 'variables.css';
-@import 'base.css';
 @import 'elemental.css';
+@import 'base.css';
 @import 'components';
 @import 'containers';
 @import 'views';

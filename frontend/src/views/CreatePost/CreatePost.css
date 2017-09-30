@@ -4,5 +4,24 @@
  */
 
 .CreatePost {
+}
 
+.CreatePost .Card__body {
+  padding: 0 2rem 3rem;
+}
+
+@media (max-width: 767px) {
+  .CreatePost .Card__body {
+    padding: 0 1rem 1rem;
+  }
+}
+
+.CreatePost__attachment-wrapper {
+  margin-bottom: 1rem;
+}
+
+.CreatePost__close {
+  font-size: 1rem;
+  display: block;
+  margin: 1rem auto;
 }

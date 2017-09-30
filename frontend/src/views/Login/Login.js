@@ -50,14 +50,14 @@ export class Login extends Component {
     }
 
     return (
-      <div className="Login">
+      <div className="Login inner-wrap">
         <div className="Card">
           <div className="Card__header">
             Login
           </div>
           <div className="Card__body">
             <h2 className="Login__headline">
-              Login to see Heejae penises
+              Login to see Posts
             </h2>
             <FormField label="Participant ID">
               <FormInput onChange={ this.onChange(`username`) } autoFocus placeholder="Enter Participant ID" />
@@ -70,7 +70,7 @@ export class Login extends Component {
                 name="basic-form-input-password"
               />
             </FormField>
-            <Button onClick={ this.loginSubmit } submit>Submit to jerk heejae off</Button>
+            <Button onClick={ this.loginSubmit } submit>Login</Button>
           </div>
         </div>
       </div>
