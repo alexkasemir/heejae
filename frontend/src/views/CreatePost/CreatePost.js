@@ -81,7 +81,10 @@ export class CreatePost extends Component {
     } = this.props;
     const data = pending[POST_ID];
 
-    createPost(data);
+    createPost(data)
+      .then(() => {
+        history.push(`/`);
+      });
   }
 
   render() {

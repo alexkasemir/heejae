@@ -5,9 +5,9 @@
 
 import request from 'store/request';
 
-export const CREATE_POST_START = 'CREATE_POST_START';
-export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
-export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
+export const CREATE_POST_START = `CREATE_POST_START`;
+export const CREATE_POST_SUCCESS = `CREATE_POST_SUCCESS`;
+export const CREATE_POST_FAILURE = `CREATE_POST_FAILURE`;
 
 export const createPostStart = () => ({
   type: CREATE_POST_START,
