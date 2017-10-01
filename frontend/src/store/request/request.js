@@ -5,14 +5,17 @@
 
 import axiosRequest from 'axios';
 import { API_URL } from 'utils';
+import Cookies from 'universal-cookie';
 
 const request = (config) => {
   return (dispatch, getState) => {
     const { token } = getState().user.auth;
+    const cookies = new Cookies(document.cookie);
     const baseConfig = {
       headers: {
         'Content-Type': `application/json`,
         Authorization: token ? `JWT ${token}` : null,
+        'X-CSRFToken': cookies.get(`csrftoken`),
       },
     };
 

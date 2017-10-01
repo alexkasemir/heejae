@@ -48,7 +48,6 @@ export class CreatePost extends Component {
   onFileChange = (data) => {
     const { updatePendingPost } = this.props;
     // const post = pending[POST_ID];
-    console.log(data);
 
     updatePendingPost({
       changes: {
