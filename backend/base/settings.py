@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'corsheaders',
     'webpack_loader',
+    'django_extensions',
 
     # Custom
     'custom_auth.apps.CustomAuthConfig',
