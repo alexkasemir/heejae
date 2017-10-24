@@ -87,7 +87,7 @@ export default class ImageButton extends Component {
             className="ImageButton__label"
           >
             <FACamera className="ImageButton__camera" />
-            Upload a dank meme...
+            Upload an image...
             <input
               id="image_upload"
               className="image_upload"
