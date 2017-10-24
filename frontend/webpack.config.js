@@ -27,7 +27,7 @@ const plugins = [
     files: '**/*.css'
   }),
   new HtmlWebpackPlugin({
-    title: 'Heejae Sucks',
+    title: 'Social Media Study',
     template: path.resolve(__dirname, './src/index.ejs'),
     filename: isProd ? '../index.html' : 'index.html',
     alwaysWriteToDisk: true,
