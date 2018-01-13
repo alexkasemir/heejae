@@ -16,7 +16,6 @@ import Alert from 'components/Alert';
 
 import pendingActions from 'store/pending/actions';
 import postActions from 'store/post/actions';
-import alertActions from 'store/alert/actions';
 
 const POST_ID = `__POST`;
 
@@ -25,7 +24,7 @@ export class CreatePost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      error: ``
     };
   }
 
@@ -44,6 +43,10 @@ export class CreatePost extends Component {
   componentWillUnmount() {
     const { deletePendingPost } = this.props;
     deletePendingPost({ id: POST_ID });
+  }
+
+  addAlert = (error) => {
+    this.setState({ error });
   }
 
   onFileChange = (data) => {
@@ -91,7 +94,6 @@ export class CreatePost extends Component {
     const {
       pending,
       postMeta,
-      addAlert,
     } = this.props;
     const data = pending[POST_ID] || {};
 
@@ -104,7 +106,7 @@ export class CreatePost extends Component {
             alt={ `${data.fileName}` }
             className="CreatePost__image"
           />
-          <Button className="CreatePost__close" onClick={ this.onFileRemove } >
+          <Button disabled={ postMeta.posting } className="CreatePost__close" onClick={ this.onFileRemove } >
             Change image
           </Button>
         </div>
@@ -122,9 +124,13 @@ export class CreatePost extends Component {
           <div className="Card__body">
             {uploadedImage || (
               <div className="CreatePost__attachment-wrapper">
+                { this.state.error
+                  ? <Alert type="error"> { this.state.error } </Alert>
+                  : null
+                }
                 <ImageButton
                   updateImage={ this.onFileChange }
-                  addAlert={ addAlert }
+                  addAlert={ this.addAlert }
                 />
               </div>
             )}
@@ -154,7 +160,6 @@ CreatePost.propTypes = {
   updatePendingPost: PropTypes.func.isRequired,
   deletePendingPost: PropTypes.func.isRequired,
   createPost: PropTypes.func.isRequired,
-  addAlert: PropTypes.func.isRequired,
   history: PropTypes.object,
 };
 
@@ -168,5 +173,4 @@ export default connect((state) => {
   updatePendingPost: pendingActions.update,
   deletePendingPost: pendingActions.destroy,
   createPost: postActions.create,
-  addAlert: alertActions.create,
 })(CreatePost);

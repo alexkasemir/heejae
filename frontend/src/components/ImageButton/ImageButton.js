@@ -43,17 +43,11 @@ export default class ImageButton extends Component {
     const file = e.target.files[0]; //eslint-disable-line
 
     if (file.size > MAX_SIZE) {
-      addAlert({
-        message: `Your file is too large. Please use a file less than 5MB`,
-        style: `danger`,
-      });
+      addAlert(`Your file is too large. Please use a file less than 5MB`);
       return;
     }
     if (!FILE_TYPES.includes(file.type)) {
-      addAlert({
-        message: `Sorry, your file type is invalid, only images and gifs`,
-        style: `danger`,
-      });
+      addAlert(`Sorry, your file type is invalid, only images and gifs`);
       return;
     }
 

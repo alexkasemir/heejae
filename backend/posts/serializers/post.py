@@ -21,8 +21,7 @@ def get_like_count(like_max, time_since):
         to_return = (2/141.0) * like_max * ((minutes / 60.0) - 48) + like_max
         return int(to_return)
 
-
-class PostSerializer(serializers.ModelSerializer):
+class GetPostSerializer(serializers.ModelSerializer):
     like_count = serializers.SerializerMethodField()
 
     def get_like_count(self, post):
@@ -39,3 +38,9 @@ class PostSerializer(serializers.ModelSerializer):
             'url',
             'like_count',
         )
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = fields = '__all__'

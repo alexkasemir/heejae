@@ -8,7 +8,7 @@ from django.utils import timezone
 from random import randint
 
 from posts.models import Post
-from posts.serializers.post import PostSerializer
+from posts.serializers.post import GetPostSerializer, PostSerializer
 
 from base.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, S3_URL
 
@@ -20,9 +20,9 @@ HIGH_CEILING = 100
 
 
 def get_random_like_max(user):
-    floor = LOW_FLOOR if user.research_group == 'low' else HIGH_FLO
+    floor = LOW_FLOOR if user.research_group == 'low' else HIGH_FLOOR
     ceiling = LOW_CEILING if user.research_group == 'low' else HIGH_CEILING
-    return randint(floor, ceiling)
+    return int(randint(floor, ceiling))
 
 
 class PostViewSet(mixins.RetrieveModelMixin,
@@ -30,7 +30,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
                   mixins.CreateModelMixin,
                   viewsets.GenericViewSet):
     queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    serializer_class = GetPostSerializer
 
     def upload_s3(self, fileURI, name):
         uploadDestination = 'images/' + name
@@ -63,7 +63,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
                     'fileName': fileName,
                     'like_max': get_random_like_max(user)
                 }
-                serializer = self.get_serializer(data=data)
+                serializer = PostSerializer(data=data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
             except:
