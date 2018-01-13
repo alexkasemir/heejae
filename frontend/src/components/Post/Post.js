@@ -36,7 +36,7 @@ export default class Post extends Component {
             />
             <div>
               <FAHeart />
-              Liked By: { data.like_max } People
+              Liked By: { data.like_count } People
               <FAHeart />
             </div>
           </div>

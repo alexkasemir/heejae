@@ -3,6 +3,18 @@ from posts.models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
+    like_count = serializers.SerializerMethodField()
+
+    def get_like_count(self, post):
+
+        return 10
+
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = (
+            'id',
+            'user',
+            'created_ts',
+            'url',
+            'like_count',
+        )

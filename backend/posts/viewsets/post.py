@@ -5,10 +5,24 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ParseError, NotAuthenticated
 from django.utils import timezone
 
+from random import randint
+
 from posts.models import Post
 from posts.serializers.post import PostSerializer
 
 from base.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_STORAGE_BUCKET_NAME, S3_URL
+
+
+LOW_FLOOR = 0
+LOW_CEILING = 15
+HIGH_FLOOR = 85
+HIGH_CEILING = 100
+
+
+def get_random_like_max(user):
+    floor = LOW_FLOOR if user.research_group == 'low' else HIGH_FLO
+    ceiling = LOW_CEILING if user.research_group == 'low' else HIGH_CEILING
+    return randint(floor, ceiling)
 
 
 class PostViewSet(mixins.RetrieveModelMixin,
@@ -39,21 +53,21 @@ class PostViewSet(mixins.RetrieveModelMixin,
             hash_ = hashlib.sha1()
             hash_.update(str(timezone.now()))
             name = hash_.hexdigest() + '.' + ext
-            # try:
-            self.upload_s3(decoded_file, name)
-            url = S3_URL + '/' + name
-            data = {
-                'user': user.id,
-                'url': url,
-                'fileType': fileType,
-                'fileName': fileName,
-                'like_max': 10
-            }
-            serializer = self.get_serializer(data=data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            # except:
-            #     raise ParseError(detail="Something funky, try again later please.")
+            try:
+                self.upload_s3(decoded_file, name)
+                url = S3_URL + '/' + name
+                data = {
+                    'user': user.id,
+                    'url': url,
+                    'fileType': fileType,
+                    'fileName': fileName,
+                    'like_max': get_random_like_max(user)
+                }
+                serializer = self.get_serializer(data=data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+            except:
+                raise ParseError(detail="Something funky, try again later please.")
         else:
             raise ParseError(detail='Please include a photo')
         return Response(serializer.data)
