@@ -11,6 +11,7 @@ import Button from 'elemental/lib/components/Button';
 
 import Image from 'components/Image';
 import ImageButton from 'components/ImageButton';
+import Alert from 'components/Alert';
 
 
 import pendingActions from 'store/pending/actions';
@@ -89,6 +90,7 @@ export class CreatePost extends Component {
   render() {
     const {
       pending,
+      postMeta,
       addAlert,
     } = this.props;
     const data = pending[POST_ID] || {};
@@ -126,7 +128,17 @@ export class CreatePost extends Component {
                 />
               </div>
             )}
-            <Button onClick={ this.create }>
+            {
+              postMeta.posting
+                ? <Alert> Post is submitting </Alert>
+                : null
+            }
+            {
+              postMeta.error
+                ? <Alert type="error"> { postMeta.error } </Alert>
+                : null
+            }
+            <Button disabled={ postMeta.posting } onClick={ this.create }>
               Post
             </Button>
           </div>
@@ -149,6 +161,7 @@ CreatePost.propTypes = {
 export default connect((state) => {
   return {
     pending: state.pending.data,
+    postMeta: state.post.meta,
   };
 }, {
   createPendingPost: pendingActions.create,

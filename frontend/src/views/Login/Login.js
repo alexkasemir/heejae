@@ -70,7 +70,7 @@ export class Login extends Component {
             </h2>
             {
               error
-                ? <Alert> { error } </Alert>
+                ? <Alert type="error"> { error } </Alert>
                 : null
             }
             <FormField label="Participant ID">

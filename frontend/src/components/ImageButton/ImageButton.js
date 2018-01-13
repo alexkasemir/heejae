@@ -30,7 +30,7 @@ export default class ImageButton extends Component {
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     updateImage({
-      fileURI: canvas.toDataURL(file.type, QUALITY),
+      fileURI: canvas.toDataURL(file.type, file.size > 5200 ? QUALITY : 1.0),
       fileName: file.name,
       fileType: file.type,
       fileAdded: true,

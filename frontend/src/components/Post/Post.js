@@ -26,12 +26,12 @@ export default class Post extends Component {
       <div className="Post">
         <div className="Card">
           <div className="Card__header">
-            Posted by: {data.user}
+            Posted by: User #{data.user}
           </div>
           <div className="Card__body">
             <Image
               src={ data.url }
-              alt={ `Post by user ${data.user}`}
+              alt={ `Post by user #${data.user}`}
               width="100%"
             />
             <div>

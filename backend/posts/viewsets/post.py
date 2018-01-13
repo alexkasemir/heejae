@@ -53,5 +53,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
             serializer.is_valid(raise_exception=True)
             serializer.save()
             # except:
-            #     raise ParseError()
+            #     raise ParseError(detail="Something funky, try again later please.")
+        else:
+            raise ParseError(detail='Please include a photo')
         return Response(serializer.data)

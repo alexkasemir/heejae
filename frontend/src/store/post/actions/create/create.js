@@ -39,7 +39,7 @@ export const create = (data) => {
           resolve();
         })
         .catch((error) => {
-          dispatch(createPostFailure(error));
+          dispatch(createPostFailure(error.response.data));
           reject();
         });
     });

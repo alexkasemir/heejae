@@ -11,16 +11,26 @@ const AlertContainer = styled.div`
   margin-bottom: 1em;
   border: 1px solid transparent;
   border-radius: 0.3em;
-  background-color: rgba(214, 66, 66, 0.1);
-  border-color: rgba(214, 66, 66, 0.05);
-  color: #d64242;
+  ${(props) => props.type === `error`
+    ? {
+      'background-color': 'rgba(214, 66, 66, 0.1)',
+      'border-color': 'rgba(214, 66, 66, 0.05)',
+      color: `#d64242`,
+    }
+    : {
+      'background-color': `rgba(52, 194, 64, 0.1)`,
+      'border-color': `rgba(52, 194, 64, 0.05)`,
+      color: `#34c240`,
+    }}
 `;
+
+
 
 
 export default class Alert extends Component {
   render() {
     return (
-      <AlertContainer>
+      <AlertContainer type={ this.props.type }>
         { this.props.children }
       </AlertContainer>
     );
