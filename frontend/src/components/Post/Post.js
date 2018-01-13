@@ -22,6 +22,8 @@ export default class Post extends Component {
   render() {
     const { data } = this.props;
 
+    console.log(data);
+
     return (
       <div className="Post">
         <div className="Card">
@@ -31,6 +33,7 @@ export default class Post extends Component {
           <div className="Card__body">
             <Image
               src={ data.url }
+              alt={ `Post by user ${data.user}`}
               width="100%"
             />
             <div>

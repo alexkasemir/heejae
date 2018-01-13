@@ -12,6 +12,8 @@ import FormField from 'elemental/lib/components/FormField';
 import FormInput from 'elemental/lib/components/FormInput';
 import Button from 'elemental/lib/components/Button';
 
+import Alert from 'components/Alert';
+
 import userActions from 'store/user/actions';
 
 export class Login extends Component {
@@ -20,6 +22,7 @@ export class Login extends Component {
     this.state = {
       username: ``,
       password: ``,
+      error: ``,
     };
   }
 
@@ -39,11 +42,18 @@ export class Login extends Component {
     login(this.state)
       .then(() => {
         history.push(`/`);
-      });
+      })
+      .catch((e) => {
+        console.log(e);
+        this.setState({
+          error: e,
+        });
+      })
   }
 
   render() {
     const { jwt } = this.props;
+    const { error } = this.state;
 
     if (jwt) {
       return <Redirect to="/" />;
@@ -59,6 +69,11 @@ export class Login extends Component {
             <h2 className="Login__headline">
               Login to see Posts
             </h2>
+            {
+              error
+                ? <Alert> { error } </Alert>
+                : null
+            }
             <FormField label="Participant ID">
               <FormInput onChange={ this.onChange(`username`) } autoFocus placeholder="Enter Participant ID" />
             </FormField>
