@@ -6,3 +6,16 @@
 .CreateWorkout {
 
 }
+
+.react-datepicker__time-list {
+  padding: 0;
+}
+
+.CreateWorkout .Button {
+  margin-top: 20px;
+}
+
+.CreateWorkout__input {
+  width: 400px;
+  text-align: center;
+}

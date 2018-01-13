@@ -5,9 +5,8 @@ from workouts.models import Workout
 from workouts.serializers.workout import WorkoutSerializer
 
 
-class WorkoutViewSet(mixins.RetrieveModelMixin,
-                  mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  viewsets.GenericViewSet):
+class WorkoutViewSet(mixins.ListModelMixin,
+                     mixins.CreateModelMixin,
+                     viewsets.GenericViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer

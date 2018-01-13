@@ -30,7 +30,7 @@ const AlertContainer = styled.div`
 export default class Alert extends Component {
   render() {
     return (
-      <AlertContainer type={ this.props.type }>
+      <AlertContainer className={this.props.className} type={ this.props.type }>
         { this.props.children }
       </AlertContainer>
     );

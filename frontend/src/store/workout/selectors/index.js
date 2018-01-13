@@ -3,6 +3,8 @@
  * Written by: Alex Kasemir
  */
 
+import allWorkouts from './allWorkouts';
+
 export default {
-  ...makeModelSelectors({ model: `workout` }),
+  allWorkouts,
 };
