@@ -13,9 +13,10 @@ export const getPostsStart = () => ({
   type: GET_POSTS_START,
 });
 
-export const getPostsSuccess = (posts) => ({
+export const getPostsSuccess = (data) => ({
   type: GET_POSTS_SUCCESS,
-  posts,
+  posts: data.results,
+  next: data.next,
 });
 
 export const getPostsFailure = (error) => ({
@@ -24,17 +25,21 @@ export const getPostsFailure = (error) => ({
 });
 
 
-export const getAll = () => {
-  return (dispatch) => {
+export const getAll = (getNext = false) => {
+  return (dispatch, getState) => {
     dispatch(getPostsStart());
+    const { meta } = getState().post;
+    const hasNext = meta && meta.next;
+    const urlConfig = {
+      url: getNext && hasNext ? meta.next : `/posts/`,
+      method: `GET`,
+      domainIncluded: getNext && hasNext,
+    };
 
     return new Promise((resolve, reject) => {
-      return dispatch(request({
-        method: `get`,
-        url: `/posts/`,
-      }))
+      return dispatch(request(urlConfig))
         .then((response) => {
-          dispatch(getPostsSuccess(response.data.results));
+          dispatch(getPostsSuccess(response.data));
           resolve();
         })
         .catch((error) => {

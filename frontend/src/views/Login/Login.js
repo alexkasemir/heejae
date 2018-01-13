@@ -44,7 +44,6 @@ export class Login extends Component {
         history.push(`/`);
       })
       .catch((e) => {
-        console.log(e);
         this.setState({
           error: e,
         });

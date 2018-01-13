@@ -22,7 +22,9 @@ const request = (config) => {
     return axiosRequest({
       ...baseConfig,
       ...config,
-      url: `${API_URL}${config.url}`,
+      url: config.domainIncluded
+        ? config.url
+        : `${API_URL}${config.url}`,
       headers: {
         ...baseConfig.headers,
         ...config.headers,

@@ -22,8 +22,6 @@ export default class Post extends Component {
   render() {
     const { data } = this.props;
 
-    console.log(data);
-
     return (
       <div className="Post">
         <div className="Card">

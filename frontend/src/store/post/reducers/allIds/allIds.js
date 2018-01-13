@@ -12,7 +12,7 @@ import uniq from 'lodash/uniq';
 const allIds = (state = [], action) => {
   switch (action.type) {
     case postActions.GET_POSTS_SUCCESS:
-      return uniq(state.concat(action.posts.map((p) => p.id)));
+      return uniq([...state, ...action.posts.map((p) => p.id)]);
     default:
       return state;
   }
