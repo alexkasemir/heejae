@@ -2,7 +2,6 @@ var path = require('path');
 
 module.exports = {
   parser: "babel-eslint",
-  extends: ["minerva"],
   env: {
     "browser": true,
     "jest": true
